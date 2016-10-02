@@ -1,33 +1,102 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Micro Blog</title>
-
+<head>
+    <title>The Pem is Mightier than the Sword</title>
     <!--
-     - Include you stylesheets and javascripts in here
-     - Load from /assets/javascripts and /assets/stylesheets  
-     - Try to avoid inline javascript and css if you can
+    - Include you stylesheets and javascripts in here
+    - Load from /assets/javascripts and /assets/stylesheets
+    - Try to avoid inline javascript and css if you can
     -->
 
-  </head>
-  <body>
-    <h1>Micro Blog</h1>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
+    <script type="text/javsacript" src="lib/bootstrap/dist/bootstrap.min.js"></script>
 
-    <!--
-      TODO: Build the front-end for the micro-blog using a front-end framework
-            of your choice.
+    <!-- Theme -->
+    <link rel="stylesheet" href="css/creative/creative.min.css" />
+    <link rel="stylesheet" href="css/fontawesome/css/font-awesome.css" />
 
-            Suggested approach:
-            - Use jquery to make ajax requests to the API endpoints in src/index.php
-            - Use the Bootstrap front-end framework for css and any of the js
-              components it includes as you see fit
-                - In particular Bootstrap's grid system for layout
+    <script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
 
-      OPTIONAL: You may make use of any extra features of the TWIG template engine
-                if you wish (see: http://twig.sensiolabs.org/)
+    <!-- The main javacript file containing all the magical stuff-->
+    <script type="text/javascript" src="js/pem.js"></script>
 
-    -->
+</head>
+<body id="page-top">
 
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">The Pem is Mightier than the Sword</a>
+        </div>
 
-  </body>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1 id="homeHeading">The Pem is Mightier</h1>
+            <hr>
+            <p>Changing the world, one line of code at a time</p>
+        </div>
+    </div>
+</header>
+
+<section id="mblog_proper">
+    <div class="container" id="mblog_content">
+        <h2>Microblog away!</h2>
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <hr class="primary">
+                <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we
+                    will get back to you as soon as possible!</p>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <i class="fa fa-phone fa-3x sr-contact"></i>
+                <p>+63917-911-1111</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                <p><a href="mailto:lord@pem.com">lord@pem.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
 </html>
