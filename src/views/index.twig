@@ -17,7 +17,10 @@
 
     <script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
 
+    <!-- My styles -->
+    <link rel="stylesheet" href="css/pem.css" />
     <!-- The main javacript file containing all the magical stuff-->
+    <script type="text/javascript" src="js/StringUtils.js"></script>
     <script type="text/javascript" src="js/pem.js"></script>
 
 </head>
@@ -67,11 +70,16 @@
 </header>
 
 <section id="mblog_proper">
-    <div class="container" id="mblog_content">
-        <h2>Microblog away!</h2>
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
-
+                <h2 class="section-heading">Microblog away!</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="mblog_content">
+                <!-- This will be populated -->
+                <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
             </div>
         </div>
     </div>
