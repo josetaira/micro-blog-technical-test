@@ -4,8 +4,37 @@
 
   $(document).ready(function() {
     // Perform initializations here:
+    $("#btn_new_mblog").click(function() {
+      openModal();
+    });
+
+    $("#btn_submit_mblog").click(function() {
+      if(document.forms["mblog_form"].mblog_content.value) {
+        $.post("/api/posts/new", {content: document.forms["mblog_form"].mblog_content.value}, function() {
+          retrievePostsAndDisplay();
+          closeModal();
+        });
+      } else {
+        alert("Your thoughts are blank");
+      }
+    });
 
     // Display all posts here:
+    retrievePostsAndDisplay();
+  });
+
+  function openModal(data) {
+    if(data) {
+
+    }
+    $("#mblog_modal").modal("show");
+  }
+
+  function closeModal() {
+    $("#mblog_modal").modal("hide");
+  }
+
+  function retrievePostsAndDisplay() {
     retrieveAllPosts(function(res) {
       var $MBLOG = $("#mblog_content");
       var newText = [];
@@ -13,7 +42,6 @@
         return parseInt(b.date) - parseInt(a.date);
       });
       for(var i = 0; i < res.length; i++) {
-        console.info(res[i]);
         newText.push("<div class='row mblog-post'><div class='col-sm-10'><div class=''>");
         newText.push("<span class='mblog-poster'>");
         newText.push(StringUtils.escapeHtml(res[i].poster));
@@ -29,7 +57,7 @@
 
       $MBLOG.html(newText.join(""));
     });
-  });
+  }
 
   function retrieveAllPosts(callback) {
     $.get("/api/posts", callback);

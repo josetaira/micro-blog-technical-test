@@ -8,17 +8,17 @@
     - Try to avoid inline javascript and css if you can
     -->
 
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
-    <script type="text/javsacript" src="lib/bootstrap/dist/bootstrap.min.js"></script>
+    <!-- Included scripts -->
+    <script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
 
     <!-- Theme -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/creative/creative.min.css" />
     <link rel="stylesheet" href="css/fontawesome/css/font-awesome.css" />
-
-    <script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
-
     <!-- My styles -->
     <link rel="stylesheet" href="css/pem.css" />
+
     <!-- The main javacript file containing all the magical stuff-->
     <script type="text/javascript" src="js/StringUtils.js"></script>
     <script type="text/javascript" src="js/pem.js"></script>
@@ -26,43 +26,10 @@
 </head>
 <body id="page-top">
 
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand page-scroll" href="#page-top">The Pem is Mightier than the Sword</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="page-scroll" href="#about">About</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#services">Services</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
-
 <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <h1 id="homeHeading">The Pem is Mightier</h1>
+            <h1 id="homeHeading">The Pem is Mightier than the Sword</h1>
             <hr>
             <p>Changing the world, one line of code at a time</p>
         </div>
@@ -73,7 +40,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="section-heading">Microblog away!</h2>
+                <h2 class="section-heading pull-left">Microblog away!</h2>
+                <button class="btn btn-primary pull-right" id="btn_new_mblog">
+                    <i class="fa fa-asterisk"></i> New
+                </button>
             </div>
         </div>
         <div class="row">
@@ -105,6 +75,35 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="mblog_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Share your thoughts</h4>
+            </div>
+            <div class="modal-body">
+                <form name="mblog_form">
+                    <div class="form-group">
+                        <label for="mblog_content">Your voice, unchained</label>
+                        <textarea class="form-control"
+                                  id="mblog_content"
+                                  name="mblog_content"
+                                  rows="5"
+                                  placeholder="What's on your mind?"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn_submit_mblog">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 </body>
 </html>

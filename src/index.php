@@ -9,6 +9,7 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /* SQLite config
 
@@ -74,8 +75,20 @@ $app->get('/api/posts/id/{post_id}', function($post_id) use($app) {
     }
 });
 
-$app->post('/api/posts/new', function (Request $request) {
-  //TODO
+$app->post('/api/posts/new', function (Request $request) use($app) {
+    $content = $request->get('content');
+
+    if($content) {
+        $posts = array(content => $content,
+            date => time(),
+            user_id => 0);
+
+        $res = $app['db']->insert('posts', $posts);
+
+        return new Response($res, 200);
+    } else {
+        return new Response("Incorrect parameters", 500);
+    }
 });
 
 
