@@ -45,7 +45,7 @@ TODO: Error checking - e.g. if try retrieve posts for a user_id that does
 */
 
 $app->get('/api/posts', function() use($app) {
-    $sql = "SELECT posts.*, users.fname || ' ' || users.lname poster "
+    $sql = "SELECT posts.rowid, posts.*, users.fname || ' ' || users.lname poster "
           ."  FROM posts, users WHERE posts.user_id = users.user_id";
     $posts = $app['db']->fetchAll($sql);
 
@@ -53,7 +53,7 @@ $app->get('/api/posts', function() use($app) {
 });
 
 $app->get('/api/posts/user/{user_id}', function($user_id) use($app) {
-    $sql = "SELECT posts.*, users.fname || ' ' || users.lname poster "
+    $sql = "SELECT posts.rowid, posts.*, users.fname || ' ' || users.lname poster "
           ."  FROM posts, users WHERE posts.user_id = users.user_id AND user_id = ?";
     $posts = $app['db']->fetchAll($sql, array((int) $user_id));
 
@@ -65,7 +65,7 @@ $app->get('/api/posts/user/{user_id}', function($user_id) use($app) {
 });
 
 $app->get('/api/posts/id/{post_id}', function($post_id) use($app) {
-    $sql = "SELECT rowid, *, (SELECT fname || ' ' || lname FROM users WHERE users.user_id = poster.user_id) poster FROM posts WHERE rowid = ?";
+    $sql = "SELECT posts.rowid, *, (SELECT fname || ' ' || lname FROM users WHERE users.user_id = posts.user_id) poster FROM posts WHERE rowid = ?";
     $post = $app['db']->fetchAssoc($sql, array((int) $post_id));
 
     if($post === false) {
@@ -85,7 +85,50 @@ $app->post('/api/posts/new', function (Request $request) use($app) {
 
         $res = $app['db']->insert('posts', $posts);
 
-        return new Response($res, 200);
+        if($res) {
+            return new Response("Post successfully created", 200);
+        } else {
+            return new Response("Could not insert post", 500);
+        }
+    } else {
+        return new Response("Incorrect parameters", 500);
+    }
+});
+
+$app->post('/api/posts/edit', function (Request $request) use($app) {
+    $content = $request->get('content');
+    $rowid = $request->get('rowid');
+
+    if($content && $rowid) {
+        $posts = array(content => $content,
+            date => time(),
+            user_id => 0);
+
+        $res = $app['db']->update('posts', $posts, array(rowid => $rowid));
+
+        if($res) {
+            return new Response("Post successfully updated", 200);
+        } else {
+            return new Response("Could not update post", 500);
+        }
+    } else {
+        return new Response("Incorrect parameters", 500);
+    }
+});
+
+$app->post('/api/posts/delete', function(Request $request) use($app) {
+    $rowid = $request->get('rowid');
+
+    if($rowid) {
+        $posts = array(rowid => $rowid);
+
+        $res = $app['db']->delete('posts', $posts);
+
+        if($res) {
+            return new Response("Post successfully deleted", 200);
+        } else {
+            return new Response("Could not delete post", 500);
+        }
     } else {
         return new Response("Incorrect parameters", 500);
     }
