@@ -1,9 +1,15 @@
-# Micro-blog Technical Test
+# The Pem is Mightier than the Sword
 
 ## About
 
-A part-implemented micro blogging app with API
+This is a simple micro blog that provides the following functionalities:
+* List of posts
+* Create new posts
+* Delete posts
+* Update posts
+* View individual posts
 
+All posts created and updated are based attributed to Anonymous User
 
 ## Provides
 
@@ -23,6 +29,12 @@ A part-implemented micro blogging app with API
 
 List of project specific system requirements.
 * See requirements.yml
+
+Frontend dependencies:
+* jQuery 3.1.1+
+* Bootstrap 3+
+
+In addition, this uses the Creative theme found at: https://startbootstrap.com/template-overviews/creative/
 
 ## Setup
 
